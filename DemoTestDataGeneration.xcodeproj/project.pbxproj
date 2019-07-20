@@ -89,14 +89,13 @@
 			children = (
 				D69312D022E2DFF700BF782F /* AppDelegate.swift */,
 				D69312D722E2DFF900BF782F /* Assets.xcassets */,
+				D693130122E32BDD00BF782F /* Contract */,
+				D69312FE22E32BAE00BF782F /* Entity */,
 				D69312DC22E2DFF900BF782F /* Info.plist */,
 				D69312D922E2DFF900BF782F /* LaunchScreen.storyboard */,
 				D69312D422E2DFF700BF782F /* Main.storyboard */,
-				D69312F822E2E72700BF782F /* SomeContract.swift */,
-				D69312F222E2E28E00BF782F /* SomeEntity.swift */,
-				D69312F622E2E71C00BF782F /* SomePresenterImpl.swift */,
-				D69312F022E2E1EC00BF782F /* SomeRepository.swift */,
-				D69312F422E2E2E700BF782F /* SubSomeEntity.swift */,
+				D69312FF22E32BB600BF782F /* Presenter */,
+				D693130022E32BBD00BF782F /* Repository */,
 				D69312D222E2DFF700BF782F /* ViewController.swift */,
 			);
 			path = DemoTestDataGeneration;
@@ -109,6 +108,39 @@
 				D69312FC22E2E97900BF782F /* SomePresenterImplTests.swift */,
 			);
 			path = DemoTestDataGenerationTests;
+			sourceTree = "<group>";
+		};
+		D69312FE22E32BAE00BF782F /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				D69312F222E2E28E00BF782F /* SomeEntity.swift */,
+				D69312F422E2E2E700BF782F /* SubSomeEntity.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		D69312FF22E32BB600BF782F /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				D69312F622E2E71C00BF782F /* SomePresenterImpl.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		D693130022E32BBD00BF782F /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				D69312F022E2E1EC00BF782F /* SomeRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		D693130122E32BDD00BF782F /* Contract */ = {
+			isa = PBXGroup;
+			children = (
+				D69312F822E2E72700BF782F /* SomeContract.swift */,
+			);
+			path = Contract;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
