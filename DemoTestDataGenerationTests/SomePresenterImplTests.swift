@@ -40,27 +40,9 @@ class SomePresenterImplTests: XCTestCase {
     class MockedSomeRepository: SomeRepository {
         func fetch() -> [SomeEntity] {
             return [
-                SomeEntity(id: 1,
-                           name: "Iniesta",
-                           imageUrl: nil,
-                           type: .hoge,
-                           sub: SubSomeEntity(id: 1, name: ""),
-                           deleted: false,
-                           createdAt: Date()),
-                SomeEntity(id: 2,
-                           name: "Xavi",
-                           imageUrl: nil,
-                           type: .hoge,
-                           sub: SubSomeEntity(id: 2, name: ""),
-                           deleted: false,
-                           createdAt: Date()),
-                SomeEntity(id: 3,
-                           name: "Puyol",
-                           imageUrl: nil,
-                           type: .hoge,
-                           sub: SubSomeEntity(id: 3, name: ""),
-                           deleted: false,
-                           createdAt: Date())
+                SomeEntity.stub(id: 1),
+                SomeEntity.stub(id: 2),
+                SomeEntity.stub(id: 3)
             ]
         }
     }

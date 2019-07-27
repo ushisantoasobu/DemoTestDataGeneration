@@ -1,0 +1,34 @@
+import Foundation
+@testable import DemoTestDataGeneration
+
+{% for struct in types.structs %}
+extension {{ struct.name }} {
+    static func stub(
+        {% for variable in struct.storedVariables %}
+        {# ----- Optional -----#}
+        {% if variable.typeName.isOptional %}{{variable.name}}: {{variable.typeName}} = nil{% if not forloop.last %},{% endif %}
+        {# ----- Primitive -----#}
+        {% elif variable.typeName.name == "Int" %}{{variable.name}}: {{variable.typeName}} = 0{% if not forloop.last %},{% endif %}
+        {% elif variable.typeName.name == "String" %}{{variable.name}}: {{variable.typeName}} = ""{% if not forloop.last %},{% endif %}
+        {% elif variable.typeName.name == "Bool" %}{{variable.name}}: {{variable.typeName}} = false{% if not forloop.last %},{% endif %}
+        {% elif variable.typeName.name == "Date" %}{{variable.name}}: {{variable.typeName}} = Date(){% if not forloop.last %},{% endif %}
+        {% elif variable.typeName.isArray %}{{variable.name}}: {{variable.typeName}} = []{% if not forloop.last %},{% endif %}
+        {# ----- Enum -----#}
+        {# ---------- AssociatedValueありのEnumは現状難しかったので「手動」のところに追加 ----------#}
+        {% elif variable.type.kind == "enum" and not variable.type.cases.first.hasAssociatedValue %}{{variable.name}}: {{variable.typeName}} = .{{variable.type.cases.first.name}}{% if not forloop.last %},{% endif %}
+        {# ----- 難しいものはそれぞれ手動でやる（汗） -----#}
+        {% elif variable.typeName.name == "SomeAssociatedValueIncludedType" %}{{variable.name}}: {{variable.typeName}} = .aaa(count: 0){% if not forloop.last %},{% endif %}
+        {# ----- それ以外は子Entityとして扱う -----#}
+        {% else %}{{variable.name}}: {{variable.typeName}} = {{variable.typeName}}.stub(){% if not forloop.last %},{% endif %}
+        {% endif %}
+        {% endfor %}
+    ) -> {{ struct.name }} {
+        return {{ struct.name }}(
+            {% for variable in struct.storedVariables %}
+            {{variable.name}}: {{variable.name}}{% if not forloop.last %},{% endif %}
+            {% endfor %}
+        )
+    }
+}
+
+{% endfor %}
