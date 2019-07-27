@@ -12,7 +12,8 @@ struct SomeEntity {
     let id: Int
     let name: String
     let imageUrl: String?
-    let type: SomeType
+    let type1: SomeType
+    let type2: SomeAssociatedValueIncludedType
     let sub: SubSomeEntity
     let deleted: Bool
     let createdAt: Date
@@ -21,4 +22,9 @@ struct SomeEntity {
 enum SomeType {
     case hoge
     case fuga
+}
+
+enum SomeAssociatedValueIncludedType {
+    case aaa(count: Int)
+    case bbb(count: Int)
 }

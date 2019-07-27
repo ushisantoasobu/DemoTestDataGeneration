@@ -1,0 +1,6 @@
+sources:
+  - ./DemoTestDataGeneration/Entity
+templates:
+  - template/stub.stencil
+output:
+  ./DemoTestDataGenerationTests/Entity/generated
